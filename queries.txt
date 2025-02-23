@@ -1,0 +1,189 @@
+Question-6--------------------------------------------------------------------------------------------------------------------
+To-Do List using MongoDB Database
+
+Retrieve all tasks
+
+db.tasks.find().pretty()
+
+
+Retrieve tasks based on status (e.g., only pending tasks)
+
+db.tasks.find({ status: "pending" }).pretty()
+
+
+Retrieve tasks with a due date in the next 7 days
+
+db.tasks.find({ 
+  due_date: { 
+    $gte: new Date(), 
+    $lte: new Date(new Date().setDate(new Date().getDate() + 7)) 
+  } 
+}).pretty()
+
+
+Updating a Task
+
+db.tasks.updateOne(
+  { task_id: 1 }, 
+  { $set: { status: "completed" } }
+)
+
+
+Deleting a Task
+
+db.tasks.deleteOne({ task_id: 3 })
+
+
+to check all tasks again after update or delete operations
+
+db.tasks.find().pretty()
+
+
+
+question-7--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Order Management MongoDB Database
+
+
+
+1.Retrieve all orders
+
+db.orders.find().pretty()
+
+
+2. Retrieve orders with a specific status (e.g., pending orders)
+
+db.orders.find({ order_status: "pending" }).pretty()
+
+
+3. Retrieve orders with a total amount greater than Rs. 1000
+
+db.orders.find({ total_amount: { $gt: 1000 } }).pretty()
+
+
+4.Updating an Order 
+updating the status of an order (order_id: 1) from "pending" to "shipped":
+
+db.orders.updateOne(
+  { order_id: 1 },
+  { $set: { order_status: "shipped" } }
+)
+
+5.Deleting an Order
+-> deleting an order with order_id: 4:
+
+db.orders.deleteOne({ order_id: 4 })
+
+
+
+
+question-8------------------------------------------------------------------------------------------------------------------------------------------------
+Book Library Management MongoDB Database
+
+
+Create and Use Database
+use Library_DB
+
+
+Create a collection named books:
+db.createCollection("books")
+
+
+Retrieve All Books
+db.books.find().pretty()
+
+
+Retrieve Books by Genre 
+db.books.find({ genre: "fiction" }).pretty()
+
+
+Retrieve Only Available Books
+db.books.find({ available: true }).pretty()
+
+
+Update Book Availability 
+db.books.updateOne(
+  { book_id: 2 },
+  { $set: { available: true } }
+)
+
+
+Delete a Book Record
+db.books.deleteOne({ book_id: 4 })
+
+
+
+
+Question-9-------------------------------------------------------------------------------------------------------------------------------------------------------------
+To-Do List Using MongoDB Database-----
+
+
+Retrieve All Tasks with Status "Pending"
+db.tasks.find({ status: "pending" }).pretty()
+
+
+Update the Status of Task with task_id: 2 to "Completed"
+db.tasks.updateOne(
+  { task_id: 2 },
+  { $set: { status: "completed" } }
+)
+
+
+Delete the Task with task_id: 5
+db.tasks.deleteOne({ task_id: 5 })
+
+
+Retrieve the Task with task_name: "Buy groceries"
+db.tasks.find({ task_name: "Buy groceries" }).pretty()
+
+
+Update the Description of Task with task_id: 4
+db.tasks.updateOne(
+  { task_id: 4 },
+  { $set: { description: "Call and schedule a dental appointment at 2 PM." } }
+)
+
+ Verify All Tasks After Updates
+db.tasks.find().pretty()
+
+
+
+Question.10------------------------------------------------------------------------------------------------------------------------------------
+Order Management Using MongoDB Database------
+
+
+Retrieve All Orders with Status "Shipped"
+db.orders.find({ order_status: "shipped" }).pretty()
+
+
+Update the total_amount of Order with order_id: 1 to 70000
+
+db.orders.updateOne(
+  { order_id: 1 },
+  { $set: { total_amount: 70000 } }
+)
+
+
+
+Delete the Order with order_id: 4
+db.orders.deleteOne({ order_id: 4 })
+
+
+Retrieve the Order with customer_name: "Alice Johnson"
+db.orders.find({ customer_name: "Alice Johnson" }).pretty()
+
+
+Update the order_status of Order with order_id: 2 to "Delivered"
+
+db.orders.updateOne(
+  { order_id: 2 },
+  { $set: { order_status: "delivered" } }
+)
+
+
+Retrieve All Orders with total_amount Greater Than or Equal to 15000
+db.orders.find({ total_amount: { $gte: 15000 } }).pretty()
+
+
+Verify All Orders After Updates
+
+db.orders.find().pretty()
